@@ -1,0 +1,126 @@
+@font-face {
+    font-family: disney;
+    src: url(NewWaltDisneyUi-8YdA.ttf);
+}
+@font-face {
+    font-family: disney-lite;
+    src: url(NewWaltDisneyFontRegular-BPen.ttf);
+}
+@import url('https://fonts.cdnfonts.com/css/poppins');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #0F1014;
+    color: #fff;
+}
+
+#page1 {
+    height: 100vh;
+    width: 100%;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+    background-color: #0F1014;
+    z-index: 10;
+}
+
+.logo {
+    height: 100%;
+    font-family: disney-lite;
+    padding: 1vw 4vw;
+    font-size: 3vw;
+}
+
+ul {
+    display: flex;
+    font-family: disney-lite;
+    gap: 4vw;
+    padding: 1vw 4vw;
+}
+
+li {
+    list-style: none;
+    text-decoration: none;
+    font-size: 1.8vw;
+   
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+i {
+    font-size: 1.4vw;
+}
+
+.arc {
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    background-color: none;
+    border-top: 2px solid #fff;
+    position: absolute;
+    transform: rotate(-30deg) translateX(-5%) translateY(-10%);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 1s;
+}
+
+.arc-show:hover + .arc {
+    opacity: 1;
+}
+
+.banner {
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    background-color: #0F1014;
+}
+
+.banner .slider {
+    width: 180px;
+    height: 250px;
+    position: absolute;
+    top: 20%;
+    left: calc(50% - 90px);
+    transform-style: preserve-3d;
+    transform: perspective(1200px);
+    animation: run 20s linear infinite;
+    z-index: 4;
+}
+
+@keyframes run {
+    from {
+        transform: perspective(1200px) rotateX(-16deg) rotateY(0deg);
+    }
+    to {
+        transform: perspective(1200px) rotateX(-16deg) rotateY(360deg);
+    }
+}
+
+.banner .slider .item {
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: rotateY(calc((var(--position) - 1) * (360deg / var(--quantity)))) translateZ(400px);
+}
+
+.item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
